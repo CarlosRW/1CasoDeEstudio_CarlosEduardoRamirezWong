@@ -1,37 +1,37 @@
 <?php
-// Array predefinido de órdenes de servicio
+// Array predefinido de órdenes de servicio (5 órdenes)
 $ordenes = array(
     array(
         'cliente' => 'Juan Pérez',
         'placa' => 'ABC123',
-        'fecha_ingreso' => '2023-05-10',
+        'fecha_ingreso' => '2025-05-10',
         'tipo_servicio' => 'Cambio de aceite',
         'observaciones' => 'Aceite sintético 5W30',
         'estado_pago' => true,
-        'fecha_finalizacion' => '2023-05-11'
+        'fecha_finalizacion' => '2025-05-11'
     ),
     array(
         'cliente' => 'María Gómez',
         'placa' => 'XYZ789',
-        'fecha_ingreso' => '2023-05-15',
+        'fecha_ingreso' => '2025-05-15',
         'tipo_servicio' => 'Revisión general',
         'observaciones' => 'Frenos desgastados',
         'estado_pago' => false,
-        'fecha_finalizacion' => '2023-05-18'
+        'fecha_finalizacion' => '2025-05-18'
     ),
     array(
-        'cliente' => 'Carlos Ruiz',
+        'cliente' => 'Carlos Ramirez',
         'placa' => 'DEF456',
-        'fecha_ingreso' => '2023-05-01',
+        'fecha_ingreso' => '2025-05-01',
         'tipo_servicio' => 'Reparación motor',
         'observaciones' => 'Sobrecalentamiento',
         'estado_pago' => true,
-        'fecha_finalizacion' => '2023-05-10'
+        'fecha_finalizacion' => '2025-05-10'
     ),
     array(
         'cliente' => 'Ana López',
         'placa' => 'GHI789',
-        'fecha_ingreso' => '2023-05-20',
+        'fecha_ingreso' => '2025-05-20',
         'tipo_servicio' => 'Alineación y balanceo',
         'observaciones' => 'Vibración a alta velocidad',
         'estado_pago' => false,
@@ -40,11 +40,11 @@ $ordenes = array(
     array(
         'cliente' => 'Pedro Sánchez',
         'placa' => 'JKL012',
-        'fecha_ingreso' => '2023-05-05',
+        'fecha_ingreso' => '2025-05-05',
         'tipo_servicio' => 'Cambio de llantas',
         'observaciones' => 'Llanta pinchada',
         'estado_pago' => true,
-        'fecha_finalizacion' => '2023-05-05'
+        'fecha_finalizacion' => '2025-05-05'
     )
 );
 ?>
@@ -60,10 +60,12 @@ $ordenes = array(
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="#">Taller ABC S.A.</a>
+            <a class="navbar-brand">Taller ABC S.A.</a>
+            <!-- Botón de menú responsive -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <!-- Menú de navegación -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -86,11 +88,11 @@ $ordenes = array(
     <div class="container mt-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1>Órdenes de Servicio</h1>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#nuevaOrdenModal">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#nuevaOrdenModal">
                 <i class="bi bi-plus-circle"></i> Agregar Orden
             </button>
         </div>
-
+        <!-- Tabla de órdenes de servicio -->
         <div class="table-responsive">
             <table class="table table-striped table-hover" id="tablaOrdenes">
                 <thead class="table-dark">
@@ -124,6 +126,7 @@ $ordenes = array(
                             $estado = 'Pago Pendiente';
                         }
                     ?>
+                    <!-- Fila de la tabla -->   
                     <tr class="<?php echo $clase_fila; ?>">
                         <td><?php echo htmlspecialchars($orden['cliente']); ?></td>
                         <td><?php echo htmlspecialchars($orden['placa']); ?></td>
@@ -139,6 +142,10 @@ $ordenes = array(
             </table>
         </div>
     </div>
+    <!-- Footer -->
+    <footer class="text-center mt-4">
+        <p>&copy; 2025 Taller ABC S.A. | Carlos Eduardo Ramirez Wong | Todos los derechos reservados.</p>
+    </footer>
 
     <!-- Modal para nueva orden -->
     <div class="modal fade" id="nuevaOrdenModal" tabindex="-1" aria-labelledby="nuevaOrdenModalLabel" aria-hidden="true">
@@ -148,8 +155,8 @@ $ordenes = array(
                     <h5 class="modal-title" id="nuevaOrdenModalLabel">Nueva Orden de Servicio</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form id="formNuevaOrden">
+                <form id="formNuevaOrden">
+                    <div class="modal-body">
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="cliente" class="form-label">Nombre del Cliente</label>
@@ -195,17 +202,16 @@ $ordenes = array(
                                 <input type="date" class="form-control" id="fecha_finalizacion">
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" id="guardarOrden">Guardar Orden</button>
+                    <button type="submit" class="btn btn-primary" id="guardarOrden">Guardar Orden</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="scripts.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
